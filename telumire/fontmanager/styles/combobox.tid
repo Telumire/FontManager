@@ -1,0 +1,48 @@
+creator: Telumire
+modifier: Telumire
+tags: $:/tags/Stylesheet $:/plugins/Telumire/FontManager/categories $:/ThemeTweaks/svg/url
+title: $:/plugins/Telumire/FontManager/styles/combobox
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+
+.combobox {
+--dropdown-button:20px;
+ position: relative;
+ display: inline-flex;
+ padding-right: var(--dropdown-button);
+ background:<<color dropdown-background>>;
+ /*border:2px inset #e3e3e3;*/
+ height: fit-content;
+}
+
+.combobox input {
+ border:0;
+ background:unset;
+ width:100%;
+}
+
+.combobox select {
+ position: absolute;
+ width: 100%;
+ opacity:0;
+ clip-path: inset(0 0 0 calc(100% - var(--dropdown-button)));
+ pointer-events:all;
+ cursor:pointer;
+}
+
+/*Custom dropdown button*/
+.combobox:after {
+ content:"";
+ position: absolute;
+ inset: 0 0 0 auto;
+ width: var(--dropdown-button);
+ background: center / 8px no-repeat;
+ pointer-events:none;
+ <$let
+svg="$:/core/images/down-arrow"
+fill="foreground"
+>
+{{$:/plugins/Telumire/FontManager/snippets/css/svg/url}}
+</$let>
+ background-image:var(--url);
+}

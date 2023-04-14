@@ -1,0 +1,10 @@
+creator: Telumire
+default-font-size: 1em
+font-family: Roboto Slab
+font-selector: h2.tc-title
+font-size: 1em
+modifier: Telumire
+show-preview: 
+tags: $:/plugins/Telumire/FontManager/categories category
+title: $:/plugins/Telumire/FontManager/categories/tc-title
+

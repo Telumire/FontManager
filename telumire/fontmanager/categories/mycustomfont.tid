@@ -1,0 +1,10 @@
+creator: Telumire
+default-font-size: 1em
+font-family: poppinsblack
+font-selector: .myawesomefont
+font-size: 1em
+modifier: Telumire
+show-preview: 
+tags: $:/plugins/Telumire/FontManager/manager category
+title: $:/plugins/Telumire/FontManager/categories/myCustomFont
+

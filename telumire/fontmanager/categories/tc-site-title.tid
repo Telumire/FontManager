@@ -1,0 +1,11 @@
+creator: Telumire
+css: color:<<color primary>>;
+default-font-size: 2em
+font-family: Abril Fatface
+font-selector: .tc-site-title
+font-size: 3em
+modifier: Telumire
+show-preview: 
+tags: $:/plugins/Telumire/FontManager/categories category
+title: $:/plugins/Telumire/FontManager/categories/tc-site-title
+

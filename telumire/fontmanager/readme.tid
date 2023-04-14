@@ -1,0 +1,28 @@
+created: 20230414050338654
+modified: 20230414050357577
+tags: 
+title: $:/plugins/Telumire/FontManager/readme
+type: text/vnd.tiddlywiki
+
+\define open-manager()
+<$action-setfield $tiddler="$:/state/tab-1749438307" text="$:/core/ui/ControlPanel/Appearance"/>
+<$action-setfield $tiddler="$:/state/tab--1963855381" text={{{ [<prefix>] manager +[join[/]] }}}/>
+<$action-navigate $to="$:/ControlPanel"/>
+\end
+<$let
+prefix={{{ [{!!title}trim[/readme]] }}}
+plugin={{{ [<prefix>split[/]last[]] }}}
+>
+
+
+;<$text text=<<plugin>>/>
+
+Create categories in the <$button class="tc-btn-invisible tc-tiddlylink" tag="a" actions=<<open-manager>> >font manager</$button>, set a css selector and a font to customize your wiki's fonts. You might need to select another text sample the first time to make the plugin work.
+
+<$button actions="""
+<$action-deletetiddler $filter="[prefix<prefix>]"/>
+""">{{$:/core/images/delete-button}} Uninstall</$button>
+
+;FAQ
+
+<<list-links "[tag[FAQ]]" :else[[http://www.telumire.be/FontManager/#FAQ]]>>

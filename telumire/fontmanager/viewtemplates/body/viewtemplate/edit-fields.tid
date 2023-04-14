@@ -1,0 +1,10 @@
+modifier: Telumire
+tags: edit-fields $:/plugins/Telumire/FontManager/categories
+title: $:/plugins/Telumire/FontManager/viewtemplates/body/viewtemplate/edit-fields
+
+<$transclude field=text/>
+<span class="edit-field">
+<$vars newFieldNameTiddler=<<qualify "$:/temp/NewFieldName">> newFieldValueTiddler=<<qualify "$:/temp/NewFieldValue">>>
+<$transclude tiddler="$:/core/ui/EditTemplate/fields"/>
+</$vars>
+<span>

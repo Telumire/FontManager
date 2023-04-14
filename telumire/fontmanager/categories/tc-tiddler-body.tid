@@ -1,0 +1,10 @@
+creator: Telumire
+default-font-size: 15px
+font-family: Roboto Slab
+font-selector: .tc-tiddler-frame .tc-tiddler-body
+font-size: 15px
+modifier: Telumire
+show-preview: 
+tags: $:/plugins/Telumire/FontManager/categories category
+title: $:/plugins/Telumire/FontManager/categories/tc-tiddler-body
+

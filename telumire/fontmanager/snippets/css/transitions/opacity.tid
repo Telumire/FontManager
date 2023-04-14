@@ -1,0 +1,7 @@
+code-body: yes
+modifier: Telumire
+tags: $:/plugins/Telumire/FontManager/categories
+title: $:/plugins/Telumire/FontManager/snippets/css/transitions/opacity
+
+<<transition "opacity 150ms ease-in-out">>
+opacity: 1;

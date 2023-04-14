@@ -1,0 +1,36 @@
+modifier: Telumire
+tags: $:/tags/Stylesheet $:/plugins/Telumire/FontManager/categories
+title: $:/plugins/Telumire/FontManager/styles/autowidth
+
+.autowidth{
+position:relative;
+display:inline-block;
+min-width:100px;
+max-width:100%;
+line-break: anywhere;
+}
+
+.autowidth :is(input,textarea){
+all:unset;
+position:absolute;
+inset:0;
+width:100%;
+height: 100%;
+border: 0;
+}
+
+.autowidth :is(input,textarea)+pre{
+margin:unset;
+padding:unset;
+opacity:0;
+pointer-events:none;
+}
+
+.autowidth :is(input,textarea)+pre:empty:after{
+content: 'placeholder';
+}
+
+.autowidth *{
+font-family:inherit;
+font-size:inherit;
+}

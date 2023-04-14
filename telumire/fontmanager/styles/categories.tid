@@ -1,0 +1,13 @@
+created: 20230414045833501
+modified: 20230414045836159
+modifier: Telumire
+tags: $:/plugins/Telumire/FontManager/categories $:/tags/Stylesheet
+title: $:/plugins/Telumire/FontManager/styles/categories
+
+<$list filter="[all[tiddlers+shadows]has[font-selector]]">
+{{!!font-selector}}{
+font-family:{{!!font-family}};
+font-size:{{!!font-size}};
+{{!!css}}
+}
+</$list>

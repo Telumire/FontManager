@@ -1,0 +1,11 @@
+code-body: yes
+creator: Telumire
+list-before: 
+modifier: Telumire
+tags: $:/tags/ViewTemplateBodyFilter edit-fields $:/plugins/Telumire/FontManager/categories
+title: $:/plugins/Telumire/FontManager/viewtemplates/body/viewtemplatebodyfilter/edit-fields
+type: 
+
+[type[edit-fields]then[$:/plugins/Telumire/FontManager/viewtemplates/body/viewtemplate/edit-fields]]
+[has[edit-fields]then[$:/plugins/Telumire/FontManager/viewtemplates/body/viewtemplate/edit-fields]]
+[has[font-selector]then[$:/plugins/Telumire/FontManager/viewtemplates/body/viewtemplate/edit-fields]]

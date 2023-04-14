@@ -1,0 +1,11 @@
+creator: Telumire
+default-font-size: 14px
+font-family: Roboto Slab
+font-selector: .tc-site-subtitle
+font-size: 14px
+modifier: Telumire
+show-preview: 
+tags: $:/plugins/Telumire/FontManager/categories category
+title: $:/plugins/Telumire/FontManager/categories/tc-site-subtitle
+type: 
+

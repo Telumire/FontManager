@@ -1,0 +1,155 @@
+caption: Font Manager
+created: 20230414045802656
+creator: Telumire
+list: $:/plugins/Telumire/FontManager/categories [[FontManager/Site Title]] [[FontManager/Tiddler Title]] [[FontManager/Tiddler Body]] FontManager/Fonts/Style $:/FontManager/Style $:/plugins/Telumire/FontManager/styles/combobox $:/plugins/Telumire/FontManager/styles/autowidth $:/plugins/Telumire/FontManager/snippets/css/transitions/opacity
+modified: 20230414045821625
+modifier: Telumire
+show-preview: hide
+tags: $:/tags/ControlPanel/Appearance
+text-sample: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+text-sample.alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+text-sample.alphanumeral: ABCabc123
+text-sample.defaults: alphabet numerals alphanumeral paragraph sentence
+text-sample.numerals: 1234567890
+text-sample.paragraph: A peep at some distant orb has power to raise and purify our thoughts like a strain of sacred music, or a noble picture, or a passage from the grander poets. It always does one good.
+text-sample.sentence: Almost before we knew it, we had left the ground.
+title: $:/plugins/Telumire/FontManager/manager
+
+\define storyTiddler() $:/plugins/Telumire/FontManager/manager
+\define currentTiddler() $:/plugins/Telumire/FontManager/manager
+\define add-category()
+<$action-createtiddler
+$basetitle={{{[<storyTiddler>][[/]][{!!text}]+[join[]]}}}
+tags={{{[<storyTiddler>format:titlelist[]] category +[join[ ]]}}}
+font-selector={{{ [{!!text}slugify[]] }}}
+font-family=""
+font-size="1em"
+default-font-size="1em"
+/>
+<$action-setfield text=""/>
+\end
+<!--
+=============================
+Select a text to be displayed
+=============================
+-->
+<span class="text-sample-selection">
+<$select field=text-sample default={{!!text-sample}}>
+<$list filter='[list[!!text-sample.defaults]]'>
+<option value={{{ [<storyTiddler>fields[]search{!!title}] :reduce[<storyTiddler>get<currentTiddler>]}}}>
+<$view field='title'/>
+</option>
+</$list>
+<option value={{!!text-sample}}>custom</option>
+</$select>
+<$edit-text
+tag="input"
+field="text-sample"
+placeholder="Text sample"
+default="lorem ipsum"
+class="tc-edit-texteditor"
+/>
+<!--
+=============================
+Master toggle
+=============================
+-->
+<$let toggle={{{[all[tiddlers+shadows]has[font-selector]!has[show-preview]limit[1]then[hide]else[ ]]}}}>
+<$button
+tooltip="Toggle all text preview"
+aria-label="Toggle preview"
+class="tc-btn-invisible toggle-master"
+actions="""
+<$list filter="[all[tiddlers+shadows]has[font-selector]]" variable="category">
+<$action-listops $tiddler=<<category>> $field="show-preview" $filter=<<toggle>>/>
+</$list>
+"""
+>
+<!-- Toggle preview  -->
+<$transclude tiddler={{{ [<toggle>match[hide]then[$:/core/images/preview-open]else[$:/core/images/preview-closed]] }}}/>
+</$button>
+</$let>
+</span>
+<!--
+==================
+begin list of categories
+================== 
+-->
+<$list filter="[all[tiddlers+shadows]has[font-selector]]">
+<div class="typography-category">
+<h3 class="typography-category-name">
+<$link>
+<$text text={{{ [{!!title}split[/]last[]] }}}/>
+</$link>
+{{||$:/core/ui/Buttons/delete}}
+</h3>
+@@.combobox
+<$edit-text field=font-family placeholder="font-family"/>
+<$select field=font-family>
+<$list filter="[[font-family]tagging[]search{!!font-family}] :map[split[/]last[]]">
+<option>{{!!title}}</option>
+</$list>
+</$select>
+@@
+@@.autowidth
+<$edit-text field="font-size" tag="input" placeholder={{!!default-font-size}} default="1em" autocomplete="on"/><pre>{{!!font-size}}</pre>
+@@
+<div 
+class="text-sample"
+style={{{ [[font-family:]] [{!!font-family}] [[;font-size:]] [{!!font-size}] +[join[]] }}}
+>
+<$button class="tc-btn-invisible" message="tm-copy-to-clipboard"
+param={{!!font-selector}}
+tooltip={{{ 'selector = '[{!!font-selector}]+[join[]] }}}>
+<!--
+========================================================
+if the fold bar is folded, hide, otherwise show the text
+========================================================
+-->
+<$reveal tag="div" type="nomatch" state="!!show-preview" text="hide" default="" retain="yes" animate="yes">
+<$view tiddler=<<storyTiddler>> field="text-sample"/>
+</$reveal>
+</$button>
+<!--
+========================================================
+fold bar
+========================================================
+-->
+<$button
+tooltip="Toggle the text preview"
+aria-label="Toggle preview"
+class={{{[[tc-fold-banner]] [{!!show-preview}] +[join[ ]]}}}
+actions="""<$action-listops $field="show-preview" $subfilter="+[toggle[hide]]"/>"""
+>
+<$transclude tiddler={{{[{!!show-preview}match[hide]then[$:/core/images/preview-closed]else[$:/core/images/preview-open]] }}}/>
+</$button>
+</div>
+</div>
+</$list>
+<$tiddler tiddler="$:/state/new-category">
+<$keyboard key="enter" actions=<<add-category>>>
+@@.autowidth
+<$edit-text tag="input" placeholder="new category" default="new category" class="tc-add-category"/><pre>{{!!text}}</pre>
+@@
+<$button
+actions=<<add-category>>
+tooltip="create a new font category"
+class="tc-btn-invisible"
+>{{$:/core/images/new-button}}
+</$button>
+</$keyboard>
+</$tiddler>
+
+<!-- <$button actions="""
+<$action-createtiddler
+$basetitle="New font"
+tags="$:/tags/RawMarkup font-family"
+text='<link href="https://fonts.googleapis.com/css2?family=_&display=swap" rel="stylesheet">'
+>
+<$action-navigate $to=<<createTiddler-title>>/>
+<$action-sendmessage
+$message="tm-edit-tiddler"
+$param=<<createTiddler-title>>
+/>
+</$action-createtiddler>
+""">New font</$button> -->
