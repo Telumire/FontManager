@@ -1,1 +1,1 @@
-# TW-Plugins-FontManager
+Font Manager plugin for tiddlywiki
